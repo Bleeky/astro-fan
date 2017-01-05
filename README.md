@@ -1,2 +1,3 @@
 # astro-fan
-Everything you'll love about Astronomy.
+
+A simple website to play with some astronomic data ! Using ELM for experimental purposes !
