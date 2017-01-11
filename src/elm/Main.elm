@@ -1,6 +1,6 @@
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Html.Events exposing ( onClick )
+import Html.Events exposing (..)
 
 -- component import example
 import Components.Hello exposing ( hello )
@@ -14,22 +14,30 @@ main =
 -- MODEL
 type alias Model =
   {number: Int,
-  elements: List String
+  elements: List String,
+  newElem: String
   }
 
+type alias Entry = {
+  title: String,
+  id: Int
+}
+
 model : Model
-model = Model 0 ["Hey Kek"]
+model = Model 0 ["Hey Kek"] ""
 
 
 -- UPDATE
-type Msg = NoOp | Increment | AddElem
+type Msg = NoOp | Increment | AddElem | RemoveElem Int | Change String
 
 update : Msg -> Model -> Model
 update msg model =
   case msg of
     NoOp -> model
+    Change newContent -> {model | newElem = newContent}
     Increment -> {model | number = model.number + 1}
-    AddElem -> {model | elements = "Hell yeah" :: model.elements}
+    AddElem -> {model | elements = model.newElem :: model.elements}
+    RemoveElem id -> {model | elements = List.append (List.take id model.elements) (List.drop (id+1) model.elements)}
 
 
 -- VIEW
@@ -44,6 +52,7 @@ view model =
           img [ src "static/img/elm.jpg", style styles.img ] []
           , hello model.number
           , p [] [ text ( "Elm Webpack Starter" ) ]
+          , input [ placeholder "Text to reverse", onInput Change ] []
           , button [ class "btn btn-primary btn-lg", onClick Increment ] [
             span[ class "glyphicon glyphicon-star" ][]
             , span[][ text "FTW!" ]
@@ -60,8 +69,12 @@ view model =
 renderList: List String -> Html Msg
 renderList lst =
   ul[]
-    (List.map (\element -> li [] [text element]) lst)
-
+    (List.indexedMap (\index element -> li [] [
+      p [] [text (element)]
+      , button [ class "btn btn-primary btn-lg", onClick (RemoveElem index) ] [
+        span [] [text "REMOVE"]
+      ]
+    ]) lst)
 
 -- CSS STYLES
 styles : { img : List ( String, String ) }
