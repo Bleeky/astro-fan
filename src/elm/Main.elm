@@ -2,30 +2,34 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
 
+import Utils.Data exposing (..)
+
 -- component import example
 import Components.Hello exposing ( hello )
+import Components.Planet exposing ( renderPlanet )
 
 -- APP
 main : Program Never Model Msg
 main =
   Html.beginnerProgram { model = model, view = view, update = update }
 
-
 -- MODEL
 type alias Model =
-  {number: Int,
+  {
+  number: Int,
   elements: List String,
-  newElem: String
+  newElem: String,
+  data: Planets
   }
 
-type alias Entry = {
+type alias Entry =
+  {
   title: String,
   id: Int
-}
+  }
 
 model : Model
-model = Model 0 ["Hey Kek"] ""
-
+model = Model 0 ["Hey Kek"] "" planets
 
 -- UPDATE
 type Msg = NoOp | Increment | AddElem | RemoveElem Int | Change String
@@ -51,6 +55,8 @@ view model =
         div [ class "jumbotron" ][
           img [ src "static/img/elm.jpg", style styles.img ] []
           , hello model.number
+          , text (getPlanetTitle (List.head model.data)).title
+          , img [ src (getPlanetTitle (List.head model.data)).texture, style styles.img ] []
           , p [] [ text ( "Elm Webpack Starter" ) ]
           , input [ placeholder "Text to reverse", onInput Change ] []
           , button [ class "btn btn-primary btn-lg", onClick Increment ] [
@@ -61,10 +67,20 @@ view model =
             span[][ text "FTW!" ]
           ],
           renderList model.elements
+          ]
         ]
       ]
-    ]
+      , renderPlanet (getPlanetTitle (List.head model.data))
   ]
+
+getPlanetTitle: Maybe {title: String, texture: String} -> {title: String, texture: String}
+getPlanetTitle planet =
+  case planet of
+    Nothing ->
+      {title = "Empty planet", texture = "Empty"}
+
+    Just planet ->
+      planet
 
 renderList: List String -> Html Msg
 renderList lst =
