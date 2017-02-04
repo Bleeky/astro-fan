@@ -80,6 +80,10 @@ if ( TARGET_ENV === 'development' ) {
             'postcss-loader',
             'sass-loader'
           ]
+        },
+        {
+          test: /\.jpe?g$|\.gif$|\.png$/,
+          loader: 'file?name=assets/img/[name].[ext]',
         }
       ]
     }

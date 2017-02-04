@@ -1,20 +1,12 @@
 module Model exposing (..)
+import Utils.Data exposing (..)
 
 type alias Model =
-  { scene : Scene}
-
-initialModel : Model
-initialModel =
-  { scene = initialScene }
-
-type alias Scene = {
-  width: Int,
-  height: Int
-}
-
-initialScene : Scene
-initialScene =
   {
-    width = 200,
-    height = 200
+    data: Planets,
+    currentPlanet: Int,
+    scaledSize: Bool
   }
+
+model : Model
+model = Model planets 0 False

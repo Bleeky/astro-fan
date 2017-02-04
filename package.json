@@ -1,9 +1,9 @@
 {
-  "name": "elm-webpack-starter",
-  "description": "Webpack setup for writing Elm apps",
-  "version": "0.8.2",
+  "name": "astro-fan",
+  "description": "Small experimental project about ELM and Svg",
+  "version": "1.0.0",
   "license": "MIT",
-  "author": "Peter Morawiec",
+  "author": "Bleeky",
   "repository": {
     "type": "git",
     "url": "https://github.com/moarwick/elm-webpack-starter"
@@ -15,7 +15,6 @@
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
-    "bootstrap-sass": "^3.3.6",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.25.0",
     "elm": "^0.18.0",
@@ -24,7 +23,6 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
     "html-webpack-plugin": "^2.17.0",
-    "jquery": "^3.1.0",
     "node-sass": "^3.7.0",
     "postcss-loader": "^1.1.1",
     "rimraf": "^2.5.2",
@@ -33,6 +31,7 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1",
-    "webpack-merge": "^0.16.0"
+    "webpack-merge": "^0.16.0",
+    "file-loader": "^0.9.0"
   }
 }

@@ -1,3 +1,89 @@
-$icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
-@import '~bootstrap-sass/assets/stylesheets/bootstrap/_mixins.scss';
-@import '~bootstrap-sass/assets/stylesheets/_bootstrap.scss'; // can add Boostrap overrides, additional Sass/CSS below...
+$sizeQotient: 1.5;
+
+body {
+    margin: 0;
+}
+
+.appContainer {
+    height: 100vh;
+    background: url("../img/space.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+
+    .planetContainer {
+        width: 100%;
+        display: flex;
+
+        .planetInfos {
+            background-color: white;
+            border: 1px solid #eee;
+            text-align: center;
+            width: 40%;
+        }
+
+        .svg {
+            margin: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            overflow: visible;
+
+            circle {
+                -webkit-transition-duration: 1s;
+                transition-duration: 1s;
+                transform-origin: center;
+            }
+
+            .Saturn {
+                transform-origin: center;
+                transform: scale(.84 * $sizeQotient);
+                transition: transform 1s;
+            }
+
+            .Jupiter {
+                transform-origin: center;
+                transform: scale(1 * $sizeQotient);
+                transition: transform 1s;
+            }
+
+            .Earth {
+                transform-origin: center;
+                transform: scale(0.08 * $sizeQotient);
+                transition: transform 1s;
+            }
+
+            .Mars {
+                transform-origin: center;
+                transform: scale(0.04 * $sizeQotient);
+                transition: transform 1s;
+            }
+
+            .Venus {
+                transform-origin: center;
+                transform: scale(0.084 * $sizeQotient);
+                transition: transform 1s;
+            }
+
+            .Neptune {
+                transform-origin: center;
+                transform: scale(0.34 * $sizeQotient);
+                transition: transform 1s;
+            }
+
+            .Uranus {
+                transform-origin: center;
+                transform: scale(0.35 * $sizeQotient);
+                transition: transform 1s;
+            }
+
+            .Mercury {
+                transform-origin: center;
+                transform: scale(0.034 * $sizeQotient);
+                transition: transform 1s;
+            }
+        }
+    }
+}
