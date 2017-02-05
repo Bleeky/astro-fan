@@ -1,7 +1,11 @@
+@import "btn";
+@import url( 'https://fonts.googleapis.com/css?family=Roboto:300, 400');
 $sizeQotient: 1.5;
 
 body {
     margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
 }
 
 .appContainer {
@@ -11,15 +15,58 @@ body {
     -moz-background-size: cover;
     background-size: cover;
 
+    .btn {
+        padding: 5px;
+        background-color: white;
+        border: none;
+        margin: 5px;
+        outline: none;
+        font-family: 'Roboto', sans-serif;
+        font-size: 14px;
+        font-weight: 200;
+        cursor: pointer;
+
+        &.active {
+            font-weight: 500;
+        }
+    }
+
     .planetContainer {
         width: 100%;
         display: flex;
+        flex-direction: column;
 
-        .planetInfos {
-            background-color: white;
-            border: 1px solid #eee;
+        .planetTitle {
+            border-radius: 3px;
             text-align: center;
-            width: 40%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 10px;
+            z-index: 2;
+            font-size: 30px;
+            font-weight: 500;
+            color: white;
+        }
+
+        .planetData {
+            background-color: rgba(61, 61, 61, 0.94);
+            border-radius: 3px;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 15px 40px;
+            z-index: 2;
+            color: ivory;
+
+            .infoField {
+                text-align: left;
+                padding: 4px 15px;
+            }
+
+            .valueField {
+                text-align: right;
+                padding: 4px 15px;
+            }
         }
 
         .svg {

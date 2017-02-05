@@ -1,12 +1,11 @@
 module Components.Planet exposing (..)
 
 import Html exposing (..)
--- import Html.Attributes exposing (..)
--- import Html.Events exposing (..)
 import Svg exposing (Svg,Attribute)
 import Svg.Attributes as Attributes exposing (x,y,width,height,fill,fontFamily,textAnchor)
+import Utils.Data exposing (..)
 
-renderPlanet: {title: String, texture: String} -> Bool -> Html planet
+renderPlanet: Planet -> Bool -> Html planet
 renderPlanet planet scaledSize =
       Svg.svg [ Attributes.width "800px", Attributes.height "400", Attributes.class "svg" ] [
         Svg.defs [] [

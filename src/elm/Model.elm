@@ -5,8 +5,9 @@ type alias Model =
   {
     data: Planets,
     currentPlanet: Int,
-    scaledSize: Bool
+    scaledSize: Bool,
+    showData: Bool
   }
 
 model : Model
-model = Model planets 0 False
+model = Model planets 0 False False
